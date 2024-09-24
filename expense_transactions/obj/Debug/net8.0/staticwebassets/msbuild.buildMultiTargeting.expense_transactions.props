@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\expense_transactions.props" />
+</Project>
