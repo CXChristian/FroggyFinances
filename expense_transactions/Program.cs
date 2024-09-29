@@ -6,15 +6,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 var connString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<UserContext>(
-    options => options.UseSqlServer(connString));
+    options => options.UseSqlite(connString));
 
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope()) {
-    // var services = scope.ServiceProvider;
-    // var context = services.GetRequiredService<ExpenseContext>();
-    // context.Database.Migrate();
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<UserContext>();
+    context.Database.Migrate();
 }
 
 // Configure the HTTP request pipeline.
