@@ -2,14 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using expense_transactions.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-
-namespace expense_transactions.Data
+public class UserContext : DbContext
 {
-    public class UserContext : IdentityDbContext<IdentityUser> {
+    public UserContext(DbContextOptions<UserContext> options) : base(options) { }
 
-    }
+    public DbSet<User> Users { get; set; }
 }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Conrad\\Documents\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\Assignment1\\expense_transactions\\expense_transactions.csproj": {}
+    "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions\\expense_transactions.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Conrad\\Documents\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\Assignment1\\expense_transactions\\expense_transactions.csproj": {
+    "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions\\expense_transactions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Conrad\\Documents\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\Assignment1\\expense_transactions\\expense_transactions.csproj",
+        "projectUniqueName": "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions\\expense_transactions.csproj",
         "projectName": "expense_transactions",
-        "projectPath": "C:\\Users\\Conrad\\Documents\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\Assignment1\\expense_transactions\\expense_transactions.csproj",
-        "packagesPath": "C:\\Users\\Conrad\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Conrad\\Documents\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\Assignment1\\expense_transactions\\obj\\",
+        "projectPath": "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions\\expense_transactions.csproj",
+        "packagesPath": "C:\\Users\\conra\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Conrad\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\conra\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -95,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
