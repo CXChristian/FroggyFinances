@@ -564,3 +564,12 @@ C:\Users\conra\Documents\School\PostSecondary\BCIT\CST\Term4\COMP4976_MicrosoftW
 C:\Users\conra\Documents\School\PostSecondary\BCIT\CST\Term4\COMP4976_MicrosoftWeb\MicrosoftWebA1\expense_transactions\obj\Debug\net8.0\expense_.1B5C4C23.Up2Date
 C:\Users\conra\Documents\School\PostSecondary\BCIT\CST\Term4\COMP4976_MicrosoftWeb\MicrosoftWebA1\expense_transactions\obj\Debug\net8.0\expense_transactions.genruntimeconfig.cache
 C:\Users\conra\Documents\School\PostSecondary\BCIT\CST\Term4\COMP4976_MicrosoftWeb\MicrosoftWebA1\expense_transactions\obj\Debug\net8.0\ref\expense_transactions.dll
+C:\Users\conra\Documents\School\PostSecondary\BCIT\CST\Term4\COMP4976_MicrosoftWeb\MicrosoftWebA1\expense_transactions\obj\Debug\net8.0\expense_transactions.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\conra\Documents\School\PostSecondary\BCIT\CST\Term4\COMP4976_MicrosoftWeb\MicrosoftWebA1\expense_transactions\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\conra\Documents\School\PostSecondary\BCIT\CST\Term4\COMP4976_MicrosoftWeb\MicrosoftWebA1\expense_transactions\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\conra\Documents\School\PostSecondary\BCIT\CST\Term4\COMP4976_MicrosoftWeb\MicrosoftWebA1\expense_transactions\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\conra\Documents\School\PostSecondary\BCIT\CST\Term4\COMP4976_MicrosoftWeb\MicrosoftWebA1\expense_transactions\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\conra\Documents\School\PostSecondary\BCIT\CST\Term4\COMP4976_MicrosoftWeb\MicrosoftWebA1\expense_transactions\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\conra\Documents\School\PostSecondary\BCIT\CST\Term4\COMP4976_MicrosoftWeb\MicrosoftWebA1\expense_transactions\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\conra\Documents\School\PostSecondary\BCIT\CST\Term4\COMP4976_MicrosoftWeb\MicrosoftWebA1\expense_transactions\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\conra\Documents\School\PostSecondary\BCIT\CST\Term4\COMP4976_MicrosoftWeb\MicrosoftWebA1\expense_transactions\bin\Debug\net8.0\Microsoft.Extensions.Options.dll

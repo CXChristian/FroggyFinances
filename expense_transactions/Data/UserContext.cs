@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 using expense_transactions.Data;
 using expense_transactions.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-public class UserContext : DbContext
+public class UserContext : IdentityDbContext<IdentityUser>
 {
     public UserContext(DbContextOptions<UserContext> options) : base(options) { }
 
@@ -17,7 +18,6 @@ public class UserContext : DbContext
         builder.Entity<User>().ToTable("Users");
         builder.Entity<User>().HasData(SampleData.GetUsers());
     }
-
 
     public DbSet<User> Users { get; set; }
 }
