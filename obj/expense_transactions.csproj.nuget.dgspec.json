@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions\\expense_transactions.csproj": {}
+    "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions.csproj": {}
   },
   "projects": {
-    "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions\\expense_transactions.csproj": {
+    "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions\\expense_transactions.csproj",
+        "projectUniqueName": "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions.csproj",
         "projectName": "expense_transactions",
-        "projectPath": "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions\\expense_transactions.csproj",
+        "projectPath": "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions.csproj",
         "packagesPath": "C:\\Users\\conra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions\\obj\\",
+        "outputPath": "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\conra\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -43,6 +43,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.8, )"

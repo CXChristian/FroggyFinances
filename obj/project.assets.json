@@ -669,6 +669,25 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/8.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "8.0.8"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -5161,6 +5180,21 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
         "microsoft.aspnetcore.cryptography.keyderivation.8.0.8.nupkg.sha512",
         "microsoft.aspnetcore.cryptography.keyderivation.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/8.0.8": {
+      "sha512": "y/2e8g+A2kRiyuHK+KWO8AgKZL6+heKM/Y2ijP4HVMP3QJFWK9xakXucMqC8A4hvL1U9JTEjOuZoa+c7Tr/XYA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/8.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net8.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll",
+        "lib/net8.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.xml",
+        "microsoft.aspnetcore.diagnostics.entityframeworkcore.8.0.8.nupkg.sha512",
+        "microsoft.aspnetcore.diagnostics.entityframeworkcore.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore/8.0.8": {
@@ -12796,6 +12830,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 8.0.8",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.8",
       "Microsoft.AspNetCore.Identity.UI >= 8.0.8",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 8.0.8",
@@ -12813,11 +12848,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions\\expense_transactions.csproj",
+      "projectUniqueName": "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions.csproj",
       "projectName": "expense_transactions",
-      "projectPath": "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions\\expense_transactions.csproj",
+      "projectPath": "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions.csproj",
       "packagesPath": "C:\\Users\\conra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\expense_transactions\\obj\\",
+      "outputPath": "C:\\Users\\conra\\Documents\\School\\PostSecondary\\BCIT\\CST\\Term4\\COMP4976_MicrosoftWeb\\MicrosoftWebA1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\conra\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -12849,6 +12884,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[8.0.8, )"
+          },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "[8.0.8, )"
