@@ -1,9 +1,10 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using expense_transactions.Models;
+using Microsoft.AspNetCore.Identity;
+using expense_transactions.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var connString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -13,8 +14,10 @@ builder.Services.AddDbContext<UserContext>(
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<UserContext>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -22,7 +25,10 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope()) {
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<UserContext>();
+    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
     context.Database.Migrate();
+    await SampleData.Initialize(userManager, roleManager);
 }
 
 // Configure the HTTP request pipeline.

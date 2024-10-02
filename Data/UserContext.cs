@@ -4,20 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using expense_transactions.Data;
 using expense_transactions.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-public class UserContext : IdentityDbContext<IdentityUser>
+public class UserContext : IdentityDbContext<ApplicationUser>
 {
     public UserContext(DbContextOptions<UserContext> options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder builder) {
         base.OnModelCreating(builder);
 
-        builder.Entity<User>().ToTable("Users");
-        builder.Entity<User>().HasData(SampleData.GetUsers());
+        builder.Entity<ApplicationUser>().ToTable("Users");
+        builder.Entity<ApplicationUser>().HasData(SampleData.GetUsers());
     }
 
-    public DbSet<User> Users { get; set; }
+    public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 }

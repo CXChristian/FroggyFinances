@@ -2,36 +2,48 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using expense_transactions.Models;
 
 namespace expense_transactions.Data
 {
-    public class SampleData
+    public static class SampleData
     {
-
-        public static List<User> GetUsers()
+        public static async Task Initialize(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
-            List<User> patients = new List<User>() {
-                new User() {
-                    Id = 1,
-                    Email="conrad@email.com",
-                    Password="password",
-                    Role="Admin"
-                },
-                new User() {
-                    Id = 2,
-                    Email="mika@email.com",
-                    Password="password",
-                    Role="Admin"
-                },
-                new User() {
-                    Id = 3,
-                    Email="user@email.com",
-                    Password="password",
-                    Role="User"
-                },
+            // Ensure roles are created
+            if (!await roleManager.RoleExistsAsync("Admin"))
+            {
+                await roleManager.CreateAsync(new IdentityRole("Admin"));
+            }
+
+            if (!await roleManager.RoleExistsAsync("User"))
+            {
+                await roleManager.CreateAsync(new IdentityRole("User"));
+            }
+
+            // Seed users
+            var users = GetUsers();
+            foreach (var user in users)
+            {
+                if (userManager.Users.All(u => u.Email != user.Email))
+                {
+                    var result = await userManager.CreateAsync(user, "P@$$w0rd");
+                    if (result.Succeeded)
+                    {
+                        await userManager.AddToRoleAsync(user, user.Role);
+                    }
+                }
+            }
+        }
+
+        public static List<ApplicationUser> GetUsers()
+        {
+            return new List<ApplicationUser>
+            {
+                new ApplicationUser { Email = "aa@aa.aa", Role = "admin" },
+                new ApplicationUser { Email = "mm@mm.mm", Role = "user" }
             };
-            return patients;
         }
     }
 }
