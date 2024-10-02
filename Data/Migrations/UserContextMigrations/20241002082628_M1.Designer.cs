@@ -11,7 +11,7 @@ using expense_transactions.Data;
 namespace expense_transactions.Data.Migrations.UserContextMigrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20241002063156_M1")]
+    [Migration("20241002082628_M1")]
     partial class M1
     {
         /// <inheritdoc />

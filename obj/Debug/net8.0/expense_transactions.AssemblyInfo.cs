@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("expense_transactions")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02661c75d13652b2744c0815963778aa8c2ada3b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0fd96dd5c3a233809bb045e7254da21fef88d5d")]
 [assembly: System.Reflection.AssemblyProductAttribute("expense_transactions")]
 [assembly: System.Reflection.AssemblyTitleAttribute("expense_transactions")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

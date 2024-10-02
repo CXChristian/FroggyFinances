@@ -10,7 +10,7 @@ using expense_transactions.Data;
 namespace expense_transactions.Data.Migrations.BucketContextMigrations
 {
     [DbContext(typeof(BucketContext))]
-    [Migration("20241002063246_M1")]
+    [Migration("20241002082638_M1")]
     partial class M1
     {
         /// <inheritdoc />

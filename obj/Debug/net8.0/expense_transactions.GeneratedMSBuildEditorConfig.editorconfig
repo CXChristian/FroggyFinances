@@ -26,6 +26,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\conra\Documents\School\PostSecondary\BCIT\CST\Term4\COMP4976_MicrosoftWeb\MicrosoftWebA1
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/conra/Documents/School/PostSecondary/BCIT/CST/Term4/COMP4976_MicrosoftWeb/MicrosoftWebA1/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/conra/Documents/School/PostSecondary/BCIT/CST/Term4/COMP4976_MicrosoftWeb/MicrosoftWebA1/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/conra/Documents/School/PostSecondary/BCIT/CST/Term4/COMP4976_MicrosoftWeb/MicrosoftWebA1/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/conra/Documents/School/PostSecondary/BCIT/CST/Term4/COMP4976_MicrosoftWeb/MicrosoftWebA1/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/conra/Documents/School/PostSecondary/BCIT/CST/Term4/COMP4976_MicrosoftWeb/MicrosoftWebA1/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/conra/Documents/School/PostSecondary/BCIT/CST/Term4/COMP4976_MicrosoftWeb/MicrosoftWebA1/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
