@@ -9,8 +9,8 @@ builder.Services.AddControllersWithViews();
 
 var connString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<UserContext>(
-    options => options.UseSqlite(connString));
+builder.Services.AddDbContext<UserContext>(options => options.UseSqlite(connString));
+builder.Services.AddDbContext<BucketContext>(options => options.UseSqlite(connString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -22,12 +22,14 @@ var app = builder.Build();
 
 using (var scope = app.Services.CreateScope()) {
     var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<UserContext>();
+    var userContext = services.GetRequiredService<UserContext>();
+    var bucketContext = services.GetRequiredService<BucketContext>();
     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
     try
     {
-        context.Database.Migrate();
+        userContext.Database.Migrate();
+        bucketContext.Database.Migrate();
         await SampleData.Initialize(userManager, roleManager);
     }
     catch (Exception ex)

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace expense_transactions.Data.Migrations
+namespace expense_transactions.Data.Migrations.UserContextMigrations
 {
     /// <inheritdoc />
     public partial class M1 : Migration

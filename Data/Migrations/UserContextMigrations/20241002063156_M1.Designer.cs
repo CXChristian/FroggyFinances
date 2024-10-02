@@ -4,13 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using expense_transactions.Data;
 
 #nullable disable
 
-namespace expense_transactions.Data.Migrations
+namespace expense_transactions.Data.Migrations.UserContextMigrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20241002044007_M1")]
+    [Migration("20241002063156_M1")]
     partial class M1
     {
         /// <inheritdoc />

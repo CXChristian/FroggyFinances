@@ -1,6 +1,8 @@
 Making changes to context and models, use this to update migrations
-dotnet-ef migrations add M1 -o Data/Migrations
+  dotnet ef migrations add M1 --context UserContext -o Data/Migrations/UserContextMigrations   
 
-Update the database with the new migration/model updates
-dotnet ef database update
-  - Cannot update when user table is already existing
+  dotnet ef migrations add M1 --context BucketContext -o Data/Migrations/BucketContextMigrations
+
+
+doUpdate the database with the new migration/model updates
+  dotnet ef database update

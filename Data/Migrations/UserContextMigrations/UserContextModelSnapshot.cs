@@ -3,10 +3,11 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using expense_transactions.Data;
 
 #nullable disable
 
-namespace expense_transactions.Data.Migrations
+namespace expense_transactions.Data.Migrations.UserContextMigrations
 {
     [DbContext(typeof(UserContext))]
     partial class UserContextModelSnapshot : ModelSnapshot
