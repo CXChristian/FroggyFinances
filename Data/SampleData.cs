@@ -13,9 +13,9 @@ namespace expense_transactions.Data
                 await roleManager.CreateAsync(new IdentityRole("admin"));
             }
 
-            if (!await roleManager.RoleExistsAsync("user"))
+            if (!await roleManager.RoleExistsAsync("member"))
             {
-                await roleManager.CreateAsync(new IdentityRole("user"));
+                await roleManager.CreateAsync(new IdentityRole("member"));
             }
 
             // Seed users
@@ -38,7 +38,7 @@ namespace expense_transactions.Data
             return new List<ApplicationUser>
             {
                 new ApplicationUser { UserName = "aa@aa.aa", Email = "aa@aa.aa", Role = "admin", EmailConfirmed = true },
-                new ApplicationUser { UserName = "mm@mm.mm", Email = "mm@mm.mm", Role = "user", EmailConfirmed = true }
+                new ApplicationUser { UserName = "mm@mm.mm", Email = "mm@mm.mm", Role = "member", EmailConfirmed = true }
             };
         }
     }

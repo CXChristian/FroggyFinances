@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace expense_transactions.Data.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20241002043217_M1")]
+    [Migration("20241002044007_M1")]
     partial class M1
     {
         /// <inheritdoc />
