@@ -15,7 +15,6 @@ public class UserContext : IdentityDbContext<ApplicationUser>
         base.OnModelCreating(builder);
 
         builder.Entity<ApplicationUser>().ToTable("Users");
-        builder.Entity<ApplicationUser>().HasData(SampleData.GetUsers());
     }
 
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }

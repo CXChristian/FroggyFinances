@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace expense_transactions.Data.Migrations
 {
     /// <inheritdoc />
@@ -157,15 +155,6 @@ namespace expense_transactions.Data.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Role", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[,]
-                {
-                    { "1e2be8df-af1f-4a83-8cd1-e0bc4c6f48fb", 0, "a14ea72e-40c8-41c9-80f0-aaf2e0cd52ac", "aa@aa.aa", false, false, null, null, null, null, null, false, "admin", "88726aaf-ce6c-49dd-bcc1-f58aa4e15ffa", false, null },
-                    { "dbf0b9f1-020a-4996-844f-f18a607460aa", 0, "5f3c09f8-919f-464c-b666-0b5419ddebec", "mm@mm.mm", false, false, null, null, null, null, null, false, "user", "061aec35-2616-4bc7-bd5e-c97aa4c6101e", false, null }
                 });
 
             migrationBuilder.CreateIndex(

@@ -213,34 +213,6 @@ namespace expense_transactions.Data.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("Users", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "1e2be8df-af1f-4a83-8cd1-e0bc4c6f48fb",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "a14ea72e-40c8-41c9-80f0-aaf2e0cd52ac",
-                            Email = "aa@aa.aa",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            Role = "admin",
-                            SecurityStamp = "88726aaf-ce6c-49dd-bcc1-f58aa4e15ffa",
-                            TwoFactorEnabled = false
-                        },
-                        new
-                        {
-                            Id = "dbf0b9f1-020a-4996-844f-f18a607460aa",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "5f3c09f8-919f-464c-b666-0b5419ddebec",
-                            Email = "mm@mm.mm",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            Role = "user",
-                            SecurityStamp = "061aec35-2616-4bc7-bd5e-c97aa4c6101e",
-                            TwoFactorEnabled = false
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
