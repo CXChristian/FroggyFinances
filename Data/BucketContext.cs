@@ -10,7 +10,7 @@ namespace expense_transactions.Data
 {
     public class BucketContext : DbContext 
     {
-        public BucketContext(DbContextOptions options) : base(options) { }
+        public BucketContext(DbContextOptions<BucketContext> options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder builder) {
             base.OnModelCreating(builder);
 

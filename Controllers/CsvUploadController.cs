@@ -15,6 +15,12 @@ namespace expense_transactions.Controllers
             _csvParserService = csvParserService;
         }
 
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View(); //renders index view in CsvUpload
+        }
+
         [HttpPost]
         public async Task<IActionResult> Upload(CsvUploadViewModel model)
         {

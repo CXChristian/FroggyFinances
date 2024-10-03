@@ -1,0 +1,17 @@
+﻿@model expense_transactions.Models.CsvUploadViewModel
+@{
+    ViewData["Upload"] = "Upload CSV File";
+}
+<h2>
+    Upload a CSV File
+</h2>
+
+<form asp-action="Upload" asp-asp-controller="CsvUpload" method="post" enctype="multipart/form-data">
+    <div class="primary mx-3 my-3">
+        <label for="UploadedFile">Select a CSV File:</label>
+        <input type="file" name="UploadedFile" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary mx-3 ">Upload</button>
+
+</form>
