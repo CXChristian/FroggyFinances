@@ -1,77 +1,48 @@
-// using System;
-// using Microsoft.AspNetCore.Mvc;
-// using Microsoft.EntityFrameworkCore;
-// using expense_transactions.Models;
-// using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Mvc;
+using expense_transactions.Data;
+using expense_transactions.Models;
+using expense_transactions.Services;
 
-// namespace expense_transactions.Controllers;
+namespace expense_transactions.Controllers
+{
+    public class CsvUploadController : Controller
+    {
+        private readonly TransactionContext _context;
+        private readonly CsvParserService _csvParserService;
+        public CsvUploadController(TransactionContext context, CsvParserService csvParserService)
+        {
+            _context = context;
+            _csvParserService = csvParserService;
+        }
 
-// public class CsvUploadController : Controller
-// {
+        [HttpPost]
+        public async Task<IActionResult> Upload(CsvUploadViewModel model)
+        {
+            if (model.UploadedFile != null && model.UploadedFile.Length > 0)
+            {
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", model.UploadedFile.FileName);
 
-//     private readonly DbContext _context;
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await model.UploadedFile.CopyToAsync(stream);
+                }
 
-//     public CsvUploadController(DbContext context)
-//     {
-//         _context = context;
-//     }
+                var transactions = _csvParserService.ParseCsvToTransactions(path);
 
-//     [HttpGet]
-//     public IActionResult Index()
-//     {
-//         return View();
-//     }
+                
+                Console.WriteLine($"Type of transactions: {transactions.GetType()}");
+                Console.WriteLine($"Type of single transaction: {typeof(expense_transactions.Models.TransactionModel)}");
 
-//     [HttpPost]
-//     public async Task<IActionResult> Upload(CsvUploadViewModel model) {
-//         //check if file exists and has content
-//         if (model.UploadedFile != null && model.UploadedFile.Length > 0) { 
+                _context.Transactions.AddRange(transactions);
 
-//             //save the file in uploads folder
-//             var path = Path.Combine(Directory.GetCurrentDirectory(),
-//             "wwwroot/uploads", model.UploadedFile.FileName);
+                await _context.SaveChangesAsync();
 
-            
-//         }
+                System.IO.File.Move(path, path + ".imported");
 
-//     }
-//     private static List<Transaction> ParseToTransactions(string path)
-//     {
+                return RedirectToAction("Index");
+            }
 
-//         var transactions = new List<Transaction>();
-
-//         using (var reader = new StreamReader(path))
-//         {
-
-//             reader.ReadLine(); //skip header!
-
-//             while (!reader.EndOfStream)
-//             {
-//                 var line = reader.ReadLine();
-//                 var values = line?.Split(',');
-
-//                 //skip rows where credit amount has value (ie. not a transaction)
-//                 if (!string.IsNullOrEmpty(values?[2]))
-//                 {
-//                     continue;
-//                 }
-
-//                 //parse only if debit amount has value
-
-//                 if (!string.IsNullOrEmpty(values[3]))
-//                 {
-
-//                     var transaction = new Transaction
-//                     {
-//                         Date = values?[0],
-//                         Company = values?[1],
-//                         Amount = float.Parse(values?[3] ?? "0")
-//                     };
-
-//                     transactions.Add(transaction);
-//                 }
-//             }
-//         }
-//         return transactions;
-//     }
-// }
+            return View("Index");
+        }
+    }
+}

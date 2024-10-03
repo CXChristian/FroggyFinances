@@ -12,6 +12,7 @@ var connString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<UserContext>(options => options.UseSqlite(connString));
 builder.Services.AddDbContext<BucketContext>(options => options.UseSqlite(connString));
+builder.Services.AddDbContext<TransactionContext>(options => options.UseSqlite(connString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

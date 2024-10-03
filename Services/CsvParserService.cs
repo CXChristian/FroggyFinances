@@ -1,4 +1,4 @@
-using System;
+
 using System.Globalization;
 using CsvHelper;
 using CsvHelper.Configuration;
@@ -8,9 +8,9 @@ namespace expense_transactions.Services;
 
 public class CsvParserService
 {
-    public List<Transaction> ParseCsvToTransactions(string path)
+    public List<TransactionModel> ParseCsvToTransactions(string path)
     {
-        var transactions = new List<Transaction>();
+        var transactions = new List<TransactionModel>();
         var config = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
             HasHeaderRecord = false //CSV has no header
@@ -24,7 +24,7 @@ public class CsvParserService
                 if (string.IsNullOrWhiteSpace(csvFile.GetField(3)))
                     continue;
 
-                var transaction = new Transaction
+                var transaction = new TransactionModel
                 {
                     Date = csvFile.GetField(0),
                     Company = csvFile.GetField(1),

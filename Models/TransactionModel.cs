@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace expense_transactions.Models
 {
-    public class Transaction
+    public class TransactionModel
     {   
         [Key]
         public int Id { get; set; }
@@ -14,7 +14,6 @@ namespace expense_transactions.Models
         public string? Date { get; set; }
         [Required]
         public string? Company { get; set; }
-        [Required]
         public float Amount { get; set; }
     }
 }

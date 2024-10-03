@@ -15,5 +15,6 @@ namespace expense_transactions.Data
         }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        
     }
 }
