@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Bucket List";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Operations on buckets</h1>
+
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bucket in Model)
+        {
+            <tr>
+                <td>@bucket.Id</td>
+                <td>@bucket.Category</td>
+                <td>@bucket.Company</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

@@ -32,7 +32,10 @@
                         }
                         @if (User.IsInRole("admin")) {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Buckets</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Bucket" asp-action="Index">Buckets</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">User Manager</a>
                             </li>
                         }
                     </ul>

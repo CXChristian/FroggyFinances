@@ -5,6 +5,15 @@ namespace expense_transactions.Data
 {
     public static class SampleData
     {
+        public static List<ApplicationUser> GetUsers()
+        {
+            return new List<ApplicationUser>
+            {
+                new ApplicationUser { UserName = "aa@aa.aa", Email = "aa@aa.aa", Role = "admin", EmailConfirmed = true },
+                new ApplicationUser { UserName = "mm@mm.mm", Email = "mm@mm.mm", Role = "member", EmailConfirmed = true }
+            };
+        }
+
         public static async Task Initialize(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             // Ensure roles are created
@@ -31,15 +40,6 @@ namespace expense_transactions.Data
                     }
                 }
             }
-        }
-
-        public static List<ApplicationUser> GetUsers()
-        {
-            return new List<ApplicationUser>
-            {
-                new ApplicationUser { UserName = "aa@aa.aa", Email = "aa@aa.aa", Role = "admin", EmailConfirmed = true },
-                new ApplicationUser { UserName = "mm@mm.mm", Email = "mm@mm.mm", Role = "member", EmailConfirmed = true }
-            };
         }
 
         public static List<Bucket> GetBucket()
