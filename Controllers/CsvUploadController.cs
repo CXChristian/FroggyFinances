@@ -35,15 +35,21 @@ namespace expense_transactions.Controllers
 
                 var transactions = _csvParserService.ParseCsvToTransactions(path);
 
-                
-                Console.WriteLine($"Type of transactions: {transactions.GetType()}");
-                Console.WriteLine($"Type of single transaction: {typeof(expense_transactions.Models.TransactionModel)}");
 
                 _context.Transactions.AddRange(transactions);
 
                 await _context.SaveChangesAsync();
 
                 System.IO.File.Move(path, path + ".imported");
+
+                if (System.IO.File.Exists(path))
+                {
+                    Console.WriteLine($"File {model.UploadedFile.FileName} has been successfully uploaded to {path}");
+                }
+                else
+                {
+                    Console.WriteLine("File upload failed or file not found in directory.");
+                }
 
                 return RedirectToAction("Index");
             }
