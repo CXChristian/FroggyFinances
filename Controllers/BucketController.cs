@@ -25,5 +25,15 @@ namespace Assignment1.Controllers
 
             return View(buckets);
         }
+
+        public async Task<IActionResult> Delete(int id) {
+            var bucket = _context.Buckets.Find(id);
+
+            _context.Buckets.Remove(bucket);
+            await _context.SaveChangesAsync();
+
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
