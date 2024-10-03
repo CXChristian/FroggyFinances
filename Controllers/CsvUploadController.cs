@@ -33,15 +33,6 @@ namespace expense_transactions.Controllers
                     await model.UploadedFile.CopyToAsync(stream);
                 }
 
-                var transactions = _csvParserService.ParseCsvToTransactions(path);
-
-
-                _context.Transactions.AddRange(transactions);
-
-                await _context.SaveChangesAsync();
-
-                System.IO.File.Move(path, path + ".imported");
-
                 if (System.IO.File.Exists(path))
                 {
                     Console.WriteLine($"File {model.UploadedFile.FileName} has been successfully uploaded to {path}");
@@ -51,8 +42,21 @@ namespace expense_transactions.Controllers
                     Console.WriteLine("File upload failed or file not found in directory.");
                 }
 
+                var transactions = _csvParserService.ParseCsvToTransactions(path);
+
+
+                _context.Transactions.AddRange(transactions);
+
+                await _context.SaveChangesAsync();
+
+                System.IO.File.Move(path, path + ".imported");
+
+                ViewBag.Message = "File uploaded successfully!";
+                ViewBag.FilePath = path;
+
                 return RedirectToAction("Index");
             }
+            ViewBag.Message = "No file selected or file size is zero.";
 
             return View("Index");
         }
