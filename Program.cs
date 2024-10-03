@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using expense_transactions.Models;
 using Microsoft.AspNetCore.Identity;
 using expense_transactions.Data;
+using expense_transactions.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
