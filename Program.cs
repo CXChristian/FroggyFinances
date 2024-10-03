@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using expense_transactions.Models;
 using Microsoft.AspNetCore.Identity;
 using expense_transactions.Data;
+using expense_transactions.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<UserContext>();
+
+builder.Services.AddTransient<CsvParserService>();
 
 var app = builder.Build();
 
