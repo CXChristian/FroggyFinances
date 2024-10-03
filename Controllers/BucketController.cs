@@ -18,9 +18,11 @@ namespace Assignment1.Controllers
             _context = context;
         }
 
+        [Authorize (Roles="admin")]
         public IActionResult Index()
         {
             var buckets = _context.Buckets.ToList();
+
             return View(buckets);
         }
     }
