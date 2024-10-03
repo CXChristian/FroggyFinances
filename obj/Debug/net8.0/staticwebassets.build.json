@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2mvtgOnPSvn3sZ1h3MnzJYP1uzVEVOM+/zL/t3P1csc=",
+  "Hash": "K+gyz6Ur5t9Dy2PJz3BlmVcL3o4RkT6FIecYhcFrPYs=",
   "Source": "expense_transactions",
   "BasePath": "_content/expense_transactions",
   "Mode": "Default",
@@ -2335,12 +2335,12 @@
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
     },
     {
-      "Identity": "/Users/mikaem/Desktop/WebDev/Assignment1/MicrosoftWebA1/wwwroot/uploads/2023 Feb.csv",
+      "Identity": "/Users/mikaem/Desktop/WebDev/Assignment1/MicrosoftWebA1/wwwroot/uploads/2023 Feb.csv.imported",
       "SourceId": "expense_transactions",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/mikaem/Desktop/WebDev/Assignment1/MicrosoftWebA1/wwwroot/",
       "BasePath": "_content/expense_transactions",
-      "RelativePath": "uploads/2023 Feb.csv",
+      "RelativePath": "uploads/2023 Feb.csv.imported",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2351,7 +2351,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/2023 Feb.csv"
+      "OriginalItemSpec": "wwwroot/uploads/2023 Feb.csv.imported"
     }
   ]
 }

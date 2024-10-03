@@ -245,8 +245,8 @@
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
     },
     {
-      "Id": "/Users/mikaem/Desktop/WebDev/Assignment1/MicrosoftWebA1/wwwroot/uploads/2023 Feb.csv",
-      "PackagePath": "staticwebassets/uploads/2023 Feb.csv"
+      "Id": "/Users/mikaem/Desktop/WebDev/Assignment1/MicrosoftWebA1/wwwroot/uploads/2023 Feb.csv.imported",
+      "PackagePath": "staticwebassets/uploads/2023 Feb.csv.imported"
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.expense_transactions.props",
