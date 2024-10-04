@@ -31,7 +31,7 @@ public class CsvParserService
                 var transaction = new TransactionModel
                 {
                     Date = csvFile.GetField(0),
-                    Company = normalizedCompanyName
+                    Company = normalizedCompanyName,
                     Amount = csvFile.GetField<float>(2)
                 };
 
