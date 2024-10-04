@@ -24,7 +24,8 @@ builder.Services.AddTransient<CsvParserService>();
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope()) {
+using (var scope = app.Services.CreateScope())
+{
     var services = scope.ServiceProvider;
     var userContext = services.GetRequiredService<UserContext>();
     var bucketContext = services.GetRequiredService<BucketContext>();

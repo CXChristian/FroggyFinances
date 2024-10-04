@@ -8,13 +8,14 @@ namespace expense_transactions.Data
     {
         public UserContext(DbContextOptions<UserContext> options) : base(options) { }
 
-        protected override void OnModelCreating(ModelBuilder builder) {
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
             base.OnModelCreating(builder);
 
             builder.Entity<ApplicationUser>().ToTable("Users");
         }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-        
+
     }
 }
