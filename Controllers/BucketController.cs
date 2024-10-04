@@ -97,7 +97,7 @@ namespace Assignment1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id,  Bucket bucket)
+        public async Task<IActionResult> Edit(int id, Bucket bucket)
         {
             if (id != bucket.Id)
             {
