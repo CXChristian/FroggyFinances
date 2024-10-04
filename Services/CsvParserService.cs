@@ -1,5 +1,6 @@
 
 using System.Globalization;
+using System.Text.RegularExpressions;
 using CsvHelper;
 using CsvHelper.Configuration;
 using expense_transactions.Models;
@@ -24,10 +25,13 @@ public class CsvParserService
                 if (string.IsNullOrWhiteSpace(csvFile.GetField(2)))
                     continue;
 
+                var companyName = csvFile.GetField(1);
+                var normalizedCompanyName = NormalizeCompanyName(companyName);
+
                 var transaction = new TransactionModel
                 {
                     Date = csvFile.GetField(0),
-                    Company = csvFile.GetField(1),
+                    Company = normalizedCompanyName
                     Amount = csvFile.GetField<float>(2)
                 };
 
@@ -35,5 +39,18 @@ public class CsvParserService
             }
         }
         return transactions;
+    }
+
+    private string NormalizeCompanyName(string? name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            return "UNKNOWN";
+        }
+
+        return Regex.Replace(name, @"\s+", " ").ToUpperInvariant().Trim();
+        //replaces all whitespace characters with a single space,
+        //converts to uppercase
+        //trims leading and trailing whitespace
     }
 }
