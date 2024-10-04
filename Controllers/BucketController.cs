@@ -72,7 +72,7 @@ namespace Assignment1.Controllers
         }
 
         public async Task<IActionResult> Edit(int id)
-        {   
+        {
             if (_context.Buckets == null)
             {
                 return NotFound();

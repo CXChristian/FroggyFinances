@@ -24,17 +24,17 @@ public class UserController : Controller
     }
 
     public async Task<IActionResult> Approve(string id)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+        if (user == null)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-            user.IsAdminApproved = true;
-            _context.Users?.Update(user);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Index));
+            return NotFound();
         }
+        user.IsAdminApproved = true;
+        _context.Users?.Update(user);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Index));
+    }
 }
