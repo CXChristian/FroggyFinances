@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using expense_transactions.Data;
 
@@ -10,9 +11,11 @@ using expense_transactions.Data;
 namespace expense_transactions.Migrations
 {
     [DbContext(typeof(TransactionContext))]
-    partial class TransactionContextModelSnapshot : ModelSnapshot
+    [Migration("20241004052828_AddBucketIdToTransaction")]
+    partial class AddBucketIdToTransaction
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
@@ -31,7 +34,7 @@ namespace expense_transactions.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Buckets", (string)null);
+                    b.ToTable("Bucket");
                 });
 
             modelBuilder.Entity("expense_transactions.Models.TransactionModel", b =>
@@ -65,8 +68,7 @@ namespace expense_transactions.Migrations
                 {
                     b.HasOne("expense_transactions.Models.Bucket", "Bucket")
                         .WithMany("Transactions")
-                        .HasForeignKey("BucketId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("BucketId");
 
                     b.Navigation("Bucket");
                 });

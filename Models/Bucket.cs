@@ -11,6 +11,6 @@ namespace expense_transactions.Models
         public string? Category { get; set; }
         public string? Company { get; set; }
 
-        public List<TransactionModel> Transactions { get; set; } = new List<TransactionModel>();
+        public ICollection<TransactionModel> Transactions { get; set; } = new List<TransactionModel>();
     }
 }

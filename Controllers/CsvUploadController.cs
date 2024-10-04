@@ -50,10 +50,11 @@ namespace expense_transactions.Controllers
 
                 var transactions = _csvParserService.ParseCsvToTransactions(path);
 
+                Console.WriteLine($"Number of parsed transactions: {transactions.Count}");
 
                 _context.Transactions.AddRange(transactions);
                 await _context.SaveChangesAsync();
-
+                Console.WriteLine($"Number of transactions in the database after saving: {_context.Transactions.Count()}");
                 System.IO.File.Move(path, path + ".imported");
 
                 ViewBag.Message = "File uploaded successfully!";
