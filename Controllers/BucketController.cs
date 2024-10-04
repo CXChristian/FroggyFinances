@@ -78,6 +78,7 @@ namespace Assignment1.Controllers
             if (ModelState.IsValid)
             {
                 bucket.Company = bucket.Company.ToUpper();
+                bucket.Category = CapitalizeFirstLetters(bucket.Category);
                 _context.Add(bucket);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -132,5 +133,22 @@ namespace Assignment1.Controllers
         {
             return _context.Buckets.Any(e => e.Id == id);
         }
+
+        public static string CapitalizeFirstLetters(string input)
+        {
+            var words = input.Split(' ');
+            for (var i = 0; i < words.Length; i++)
+            {
+                if (words[i].Length > 0)
+                {
+                    words[i] = words[i].ToLower();
+                    var firstLetter = words[i][0];
+                    words[i] = words[i].Remove(0, 1).Insert(0, firstLetter.ToString().ToUpper());
+                }
+            }
+
+            return string.Join(' ', words);
+        }
+
     }
 }
