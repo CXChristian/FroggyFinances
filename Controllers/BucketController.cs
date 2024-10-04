@@ -6,6 +6,7 @@ using expense_transactions.Data;
 using expense_transactions.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assignment1.Controllers
 {
@@ -26,7 +27,25 @@ namespace Assignment1.Controllers
             return View(buckets);
         }
 
-        public async Task<IActionResult> Delete(int id) {
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)  // Check parameter value
+            {
+                return NotFound();
+            }
+
+            var bucket = await _context.Buckets
+            .FirstOrDefaultAsync(m => m.Id == id);
+            if (bucket == null)  // Check if the record exists
+            {
+                return NotFound();
+            }
+
+            return View(bucket);
+        }
+
+        public async Task<IActionResult> Delete(int id) 
+        {
             var bucket = _context.Buckets.Find(id);
 
             _context.Buckets.Remove(bucket);
@@ -34,6 +53,19 @@ namespace Assignment1.Controllers
 
 
             return RedirectToAction(nameof(Index));
+        }
+
+        
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Edit(int id) 
+        {
+            var bucket = _context.Buckets.Find(id);
+
+            return View(bucket);
         }
     }
 }

@@ -54,6 +54,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Conrad/Documents/BCIT/CST/Term4/COMP4976_MicrosoftWeb/Assignment1/Views/Bucket/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVja2V0XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Conrad/Documents/BCIT/CST/Term4/COMP4976_MicrosoftWeb/Assignment1/Views/Bucket/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVja2V0XERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Conrad/Documents/BCIT/CST/Term4/COMP4976_MicrosoftWeb/Assignment1/Views/Bucket/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVja2V0XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Conrad/Documents/BCIT/CST/Term4/COMP4976_MicrosoftWeb/Assignment1/Views/Bucket/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVja2V0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
