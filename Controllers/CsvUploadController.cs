@@ -56,7 +56,7 @@ namespace expense_transactions.Controllers
                 ViewBag.Message = "File uploaded successfully!";
                 ViewBag.FilePath = path;
 
-                return View("Index");
+                return RedirectToAction("Index");
             }
             ViewBag.Message = "No file selected or file size is zero.";
 
