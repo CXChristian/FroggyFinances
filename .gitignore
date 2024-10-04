@@ -1,0 +1,24 @@
+# Ignore build and binary files
+bin/
+obj/
+*.dll
+*.pdb
+*.exe
+
+# Ignore database files
+*.db
+*.db-shm
+*.db-wal
+
+# Ignore user-specific and temporary files
+.vscode/
+*.user
+*.suo
+
+# Ignore logs, debug, and temporary files
+*.log
+*.cache
+
+# Ignore publish and package directories
+publish/
+*.publish.xml
