@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Bucket List";
+}
+
+<div class="text-center">
+    <h1 class="display-4">User Manager</h1>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Role</td>
+                <td>
+
+            </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
