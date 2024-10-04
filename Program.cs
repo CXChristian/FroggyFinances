@@ -21,6 +21,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddEntityFrameworkStores<UserContext>();
 
 builder.Services.AddTransient<CsvParserService>();
+builder.Services.AddTransient<BucketService>();
 
 var app = builder.Build();
 

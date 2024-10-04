@@ -19,10 +19,10 @@ namespace Assignment1.Controllers
             _context = context;
         }
 
-        [Authorize (Roles="admin")]
+        [Authorize(Roles = "admin")]
         public IActionResult Index()
         {
-            var buckets = _context.Buckets.ToList();
+            var buckets = _context.Buckets?.ToList();
 
             return View(buckets);
         }
@@ -34,8 +34,14 @@ namespace Assignment1.Controllers
                 return NotFound();
             }
 
+            if (_context.Buckets == null)
+            {
+                return NotFound();
+            }
+
             var bucket = await _context.Buckets
             .FirstOrDefaultAsync(m => m.Id == id);
+
             if (bucket == null)  // Check if the record exists
             {
                 return NotFound();
@@ -44,28 +50,38 @@ namespace Assignment1.Controllers
             return View(bucket);
         }
 
-        public async Task<IActionResult> Delete(int id) 
+        public async Task<IActionResult> Delete(int id)
         {
-            var bucket = _context.Buckets.Find(id);
+            var bucket = _context.Buckets?.Find(id);
 
-            _context.Buckets.Remove(bucket);
+            if (bucket == null)
+            {
+                return NotFound();
+            }
+            _context.Buckets?.Remove(bucket);
             await _context.SaveChangesAsync();
 
 
             return RedirectToAction(nameof(Index));
         }
 
-        
+
         public IActionResult Create()
         {
             return View();
         }
 
-        public async Task<IActionResult> Edit(int id) 
-        {
-            var bucket = _context.Buckets.Find(id);
+        public async Task<IActionResult> Edit(int id)
+        {   
+            if (_context.Buckets == null)
+            {
+                return NotFound();
+            }
+            var bucket = await _context.Buckets.FindAsync(id);
 
             return View(bucket);
         }
+
+
     }
 }

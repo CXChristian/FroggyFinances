@@ -12,16 +12,19 @@ namespace expense_transactions.Controllers
     {
         private readonly TransactionContext _context;
         private readonly CsvParserService _csvParserService;
-        public CsvUploadController(TransactionContext context, CsvParserService csvParserService)
+        private readonly BucketService _bucketService;
+        public CsvUploadController(TransactionContext context,
+        CsvParserService csvParserService, BucketService bucketService)
         {
             _context = context;
             _csvParserService = csvParserService;
+            _bucketService = bucketService;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            return View(); //renders index view in CsvUpload
+            return View();
         }
 
         [HttpPost]
@@ -58,6 +61,9 @@ namespace expense_transactions.Controllers
 
                 return RedirectToAction("Index");
             }
+
+            //call bucket service to categorize all transactions after uploading successfully
+            _bucketService.CategorizeAllTransactions();
             ViewBag.Message = "No file selected or file size is zero.";
 
             return View("Index");
@@ -69,6 +75,13 @@ namespace expense_transactions.Controllers
             _context.Transactions.RemoveRange(_context.Transactions);
             _context.SaveChanges();
             ViewBag.Message = "All transactions have been deleted!";
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult ClearBuckets()
+        {
+            _bucketService.ClearBucketsTable();
             return RedirectToAction("Index");
         }
     }
