@@ -71,6 +71,19 @@ namespace Assignment1.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Bucket bucket)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(bucket);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(bucket);
+        }
+
         public async Task<IActionResult> Edit(int id)
         {
             if (_context.Buckets == null)
@@ -82,6 +95,41 @@ namespace Assignment1.Controllers
             return View(bucket);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id,  Bucket bucket)
+        {
+            if (id != bucket.Id)
+            {
+                return NotFound();
+            }
 
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(bucket);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!BucketExists(bucket.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(bucket);
+        }
+
+        private bool BucketExists(int id)
+        {
+            return _context.Buckets.Any(e => e.Id == id);
+        }
     }
 }
