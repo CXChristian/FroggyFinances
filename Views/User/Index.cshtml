@@ -9,19 +9,23 @@
         <tr>
             <th>Email</th>
             <th>Role</th>
-            <th>Operations</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var user in Model)
         {
-            <tr>
-                <td>@user.UserName</td>
-                <td>@user.Role</td>
-                <td>
-
-            </td>
-            </tr>
+            @if (!user.IsAdminApproved) {
+                <tr>
+                    <td>@user.UserName</td>
+                    <td>@user.Role</td>
+                    <td>
+                        <form asp-action="Approve">
+                            <a asp-action="Approve" asp-route-id="@user.Id">Approve</a>
+                        </form>
+                    </td>
+                </tr>
+            }
         }
     </tbody>
 </table>
