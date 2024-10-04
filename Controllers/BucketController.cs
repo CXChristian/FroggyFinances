@@ -77,6 +77,7 @@ namespace Assignment1.Controllers
         {
             if (ModelState.IsValid)
             {
+                bucket.Company = bucket.Company.ToUpper();
                 _context.Add(bucket);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
