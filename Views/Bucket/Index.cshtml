@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Bucket List";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Buckets</h1>
+<button><a asp-action="Create">Create a Bucket</a></button>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bucket in Model)
+        {
+            <tr>
+                <td>@bucket.Id</td>
+                <td>@bucket.Category</td>
+                <td>@bucket.Company</td>
+                <td>
+                <a asp-action="Edit" asp-route-id="@bucket.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@bucket.Id">Details</a> |
+                <form asp-action="Delete">
+                    <a asp-action="Delete" asp-route-id="@bucket.Id">Delete</a>
+                </form>
+            </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
