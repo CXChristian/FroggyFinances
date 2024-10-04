@@ -1,5 +1,6 @@
 //TODO: add validation if file with file name already uploaded before
 //TODO: add validation for file type (only csv's)
+//TODO: remove console logs after testing
 using Microsoft.AspNetCore.Mvc;
 using expense_transactions.Data;
 using expense_transactions.Models;
@@ -48,7 +49,6 @@ namespace expense_transactions.Controllers
 
 
                 _context.Transactions.AddRange(transactions);
-
                 await _context.SaveChangesAsync();
 
                 System.IO.File.Move(path, path + ".imported");
@@ -56,11 +56,22 @@ namespace expense_transactions.Controllers
                 ViewBag.Message = "File uploaded successfully!";
                 ViewBag.FilePath = path;
 
-                return RedirectToAction("Index");
+                return View("Index");
             }
             ViewBag.Message = "No file selected or file size is zero.";
 
             return View("Index");
         }
+
+        [HttpPost]
+        public IActionResult ClearTransactions()
+        {
+            _context.Transactions.RemoveRange(_context.Transactions);
+            _context.SaveChanges();
+            ViewBag.Message = "All transactions have been deleted!";
+            return RedirectToAction("Index");
+        }
     }
+
+
 }
