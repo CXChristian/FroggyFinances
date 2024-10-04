@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace expense_transactions.Models
 {
     public class TransactionModel
-    {   
+    {
         [Key]
         public int Id { get; set; }
         [Required]

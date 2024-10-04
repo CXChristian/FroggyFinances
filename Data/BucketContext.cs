@@ -8,10 +8,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace expense_transactions.Data
 {
-    public class BucketContext : DbContext 
+    public class BucketContext : DbContext
     {
         public BucketContext(DbContextOptions<BucketContext> options) : base(options) { }
-        protected override void OnModelCreating(ModelBuilder builder) {
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
             base.OnModelCreating(builder);
 
             builder.Entity<Bucket>().ToTable("Buckets");
