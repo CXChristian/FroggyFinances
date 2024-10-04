@@ -1,0 +1,7 @@
+# Ignore build output directories
+/bin/
+/obj/
+/*.dll
+/*.pdb
+/*.assemblyinfo
+/*.sourcelink.json
