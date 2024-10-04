@@ -1,6 +1,3 @@
-//TODO: add validation if file with file name already uploaded before
-//TODO: add validation for file type (only csv's)
-//TODO: remove console logs after testing
 using Microsoft.AspNetCore.Mvc;
 using expense_transactions.Data;
 using expense_transactions.Models;
