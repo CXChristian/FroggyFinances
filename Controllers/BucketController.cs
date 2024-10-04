@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Assignment1.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class BucketController : Controller
     {
         private readonly BucketContext _context;
@@ -19,7 +20,6 @@ namespace Assignment1.Controllers
             _context = context;
         }
 
-        [Authorize(Roles = "admin")]
         public IActionResult Index()
         {
             var buckets = _context.Buckets?.ToList();

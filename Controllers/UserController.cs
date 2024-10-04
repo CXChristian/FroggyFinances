@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace expense_transactions.Controllers;
 
+[Authorize(Roles = "admin")]
 public class UserController : Controller
 {
     private readonly UserContext _context;
@@ -15,7 +16,6 @@ public class UserController : Controller
     }
 
 
-    [Authorize(Roles = "admin")]
     public IActionResult Index()
     {
         var users = _context.Users?.ToList();

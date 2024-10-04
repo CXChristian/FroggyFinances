@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using expense_transactions.Data;
 using expense_transactions.Models;
+using Microsoft.AspNetCore.Authorization;
 using expense_transactions.Services;
 
 namespace expense_transactions.Controllers
 {
+    [Authorize]
     public class CsvUploadController : Controller
     {
         private readonly TransactionContext _context;
