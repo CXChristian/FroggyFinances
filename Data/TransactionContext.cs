@@ -11,4 +11,9 @@ public class TransactionContext : DbContext
     }
 
     public DbSet<TransactionModel> Transactions { get; set; }
+
+            protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TransactionModel>().ToTable("Transactions");
+        }
 }

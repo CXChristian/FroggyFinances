@@ -59,11 +59,11 @@ namespace expense_transactions.Controllers
                 ViewBag.Message = "File uploaded successfully!";
                 ViewBag.FilePath = path;
 
+                //call bucket service to categorize all transactions after uploading successfully
+                _bucketService.CategorizeAllTransactions();
+
                 return RedirectToAction("Index");
             }
-
-            //call bucket service to categorize all transactions after uploading successfully
-            _bucketService.CategorizeAllTransactions();
             ViewBag.Message = "No file selected or file size is zero.";
 
             return View("Index");
