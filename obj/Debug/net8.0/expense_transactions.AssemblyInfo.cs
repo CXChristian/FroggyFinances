@@ -17,6 +17,7 @@ using System.Reflection;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1744095674fd680a84a124f7d5343df348aee55d")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b1baec91039a95de9599b28950d62d9c8c97849")]
@@ -27,6 +28,9 @@ using System.Reflection;
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2fb9ff308bf29aabaa389b7d4780c26409715048")]
 >>>>>>> e10ba70 (.)
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b1baec91039a95de9599b28950d62d9c8c97849")]
+>>>>>>> 22c38bb (.)
 [assembly: System.Reflection.AssemblyProductAttribute("expense_transactions")]
 [assembly: System.Reflection.AssemblyTitleAttribute("expense_transactions")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
