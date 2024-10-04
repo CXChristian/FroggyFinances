@@ -7,3 +7,6 @@ Making changes to context and models, use this to update migrations
 doUpdate the database with the new migration/model updates
   dotnet ef database update --context UserContext
   dotnet ef database update --context BucketContext
+
+Formatting Code:
+  dotnet format expense_transactions.csproj
