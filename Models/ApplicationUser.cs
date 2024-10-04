@@ -8,5 +8,6 @@ namespace expense_transactions.Models
 
 
         public string? Role { get; set; }
+        public bool IsAdminApproved { get; set; }
     }
 }

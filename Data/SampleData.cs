@@ -9,8 +9,8 @@ namespace expense_transactions.Data
         {
             return new List<ApplicationUser>
             {
-                new ApplicationUser { UserName = "aa@aa.aa", Email = "aa@aa.aa", Role = "admin", EmailConfirmed = true },
-                new ApplicationUser { UserName = "mm@mm.mm", Email = "mm@mm.mm", Role = "member", EmailConfirmed = true }
+                new ApplicationUser { UserName = "aa@aa.aa", Email = "aa@aa.aa", Role = "admin", EmailConfirmed = true, IsAdminApproved = true },
+                new ApplicationUser { UserName = "mm@mm.mm", Email = "mm@mm.mm", Role = "member", EmailConfirmed = true, IsAdminApproved = true }
             };
         }
 

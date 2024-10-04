@@ -11,7 +11,7 @@ using expense_transactions.Data;
 namespace expense_transactions.Data.Migrations.UserContextMigrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20241002082628_M1")]
+    [Migration("20241004115515_M1")]
     partial class M1
     {
         /// <inheritdoc />
@@ -169,6 +169,9 @@ namespace expense_transactions.Data.Migrations.UserContextMigrations
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsAdminApproved")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("LockoutEnabled")

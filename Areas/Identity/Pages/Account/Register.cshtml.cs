@@ -161,6 +161,7 @@ namespace expense_transactions.Areas.Identity.Pages.Account
             {
                 var user = Activator.CreateInstance<ApplicationUser>();
                 user.Role = "member";
+                user.IsAdminApproved = false;
                 return user;
             }
             catch
