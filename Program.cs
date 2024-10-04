@@ -6,7 +6,8 @@ using expense_transactions.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddSessionStateTempDataProvider();
+builder.Services.AddSession();
 
 var connString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -22,6 +23,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 builder.Services.AddTransient<CsvParserService>();
 builder.Services.AddTransient<BucketService>();
+
 
 var app = builder.Build();
 
@@ -55,6 +57,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseSession(); 
 app.UseRouting();
 
 app.UseAuthentication();

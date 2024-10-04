@@ -24,7 +24,7 @@ public class BucketService
         var bucketCompany = transaction.Company?.Trim().ToUpperInvariant();
         var bucketMapping = new Dictionary<string, string>
         {
-            { @"\b(WALMART|REAL\s*CDN\s*SUPERS|COSTCO)\b", "Groceries" },
+            { @"\b(WALMART|REAL\s*CDN\s*SUPERS|COSTCO|SAFEWAY)\b", "Groceries" },
             { @"\b(SUBWAY|MCDONALDS|TIM\s*HORTONS|STARBUCKS|RESTAU|ST\s*JAMES\s*RESTAURAT|WHITE\s*SPOT\s*RESTAURAN)\b", "Dining" },
             { @"\b(ICBC|WORLD\s*VISION|MSP|INS|INSURANCE)\b", "Insurance" },
             { @"\b(ROGERS|SHAW|FORTISBC|CABLE)\b", "Utilities" },

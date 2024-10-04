@@ -31,28 +31,35 @@ namespace expense_transactions.Controllers
                 TempData["ErrorMessage"] = "No file selected or file size is zero.";
                 return RedirectToAction("Index");
             }
+
             var fileExtension = Path.GetExtension(model.UploadedFile.FileName);
             if (fileExtension == null || !fileExtension.Equals(".csv", StringComparison.OrdinalIgnoreCase))
             {
                 TempData["ErrorMessage"] = "Invalid file type. Please upload a CSV file.";
                 return RedirectToAction("Index");
             }
+
             var uploadDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
             var filePath = Path.Combine(uploadDirectory, model.UploadedFile.FileName);
+
             if (System.IO.File.Exists(filePath))
             {
                 TempData["ErrorMessage"] = $"File '{model.UploadedFile.FileName}' has already been uploaded.";
                 return RedirectToAction("Index");
             }
+
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await model.UploadedFile.CopyToAsync(stream);
             }
+
             var transactions = _csvParserService.ParseCsvToTransactions(filePath);
             _context.Transactions.AddRange(transactions);
             await _context.SaveChangesAsync();
+
             _bucketService.CategorizeAllTransactions();
-            TempData["SuccessMessage"] = "File uploaded successfully!";
+
+            TempData["SuccessMessage"] = "File uploaded and processed successfully!";
             return RedirectToAction("Index");
         }
 

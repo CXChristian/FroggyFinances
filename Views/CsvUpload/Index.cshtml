@@ -6,6 +6,21 @@
     Upload a CSV File
 </h2>
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+    @TempData["ErrorMessage"]
+</div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+    @TempData["SuccessMessage"]
+</div>
+}
+
+
 <form asp-action="Upload" asp-asp-controller="CsvUpload" method="post" enctype="multipart/form-data">
     <div class="primary mx-3 my-3">
         <label for="UploadedFile">Select a CSV File:</label>
@@ -23,17 +38,3 @@
 <form asp-action="ClearBuckets" asp-controller="CsvUpload" method="post">
     <button type="submit" class="btn btn-danger">Clear All Buckets</button>
 </form>
-
-@if (TempData["ErrorMessage"] != null)
-{
-    <div class="alert alert-danger">
-    @TempData["ErrorMessage"]
-</div>
-}
-
-@if (TempData["SuccessMessage"] != null)
-{
-    <div class="alert alert-success">
-    @TempData["SuccessMessage"]
-</div>
-}
