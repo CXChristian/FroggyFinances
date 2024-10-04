@@ -23,3 +23,17 @@
 <form asp-action="ClearBuckets" asp-controller="CsvUpload" method="post">
     <button type="submit" class="btn btn-danger">Clear All Buckets</button>
 </form>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+    @TempData["ErrorMessage"]
+</div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+    @TempData["SuccessMessage"]
+</div>
+}

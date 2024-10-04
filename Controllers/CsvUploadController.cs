@@ -26,48 +26,37 @@ namespace expense_transactions.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Upload(CsvUploadViewModel model)
         {
-            if (model.UploadedFile != null && model.UploadedFile.Length > 0)
+            if (model.UploadedFile == null || model.UploadedFile.Length == 0)
             {
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", model.UploadedFile.FileName);
-
-                using (var stream = new FileStream(path, FileMode.Create))
-                {
-                    await model.UploadedFile.CopyToAsync(stream);
-                }
-
-                if (System.IO.File.Exists(path))
-                {
-                    Console.WriteLine($"File {model.UploadedFile.FileName} has been successfully uploaded to {path}");
-                }
-                else
-                {
-                    Console.WriteLine("File upload failed or file not found in directory.");
-                }
-
-                var transactions = _csvParserService.ParseCsvToTransactions(path);
-
-                Console.WriteLine($"Number of parsed transactions: {transactions.Count}");
-
-                _context.Transactions.AddRange(transactions);
-                await _context.SaveChangesAsync();
-                Console.WriteLine($"Number of transactions in the database after saving: {_context.Transactions.Count()}");
-                System.IO.File.Move(path, path + ".imported");
-
-                ViewBag.Message = "File uploaded successfully!";
-                ViewBag.FilePath = path;
-
-                //call bucket service to categorize all transactions after uploading successfully
-                _bucketService.CategorizeAllTransactions();
-
+                TempData["ErrorMessage"] = "No file selected or file size is zero.";
                 return RedirectToAction("Index");
             }
-            ViewBag.Message = "No file selected or file size is zero.";
-
-            return View("Index");
+            var fileExtension = Path.GetExtension(model.UploadedFile.FileName);
+            if (fileExtension == null || !fileExtension.Equals(".csv", StringComparison.OrdinalIgnoreCase))
+            {
+                TempData["ErrorMessage"] = "Invalid file type. Please upload a CSV file.";
+                return RedirectToAction("Index");
+            }
+            var uploadDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+            var filePath = Path.Combine(uploadDirectory, model.UploadedFile.FileName);
+            if (System.IO.File.Exists(filePath))
+            {
+                TempData["ErrorMessage"] = $"File '{model.UploadedFile.FileName}' has already been uploaded.";
+                return RedirectToAction("Index");
+            }
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await model.UploadedFile.CopyToAsync(stream);
+            }
+            var transactions = _csvParserService.ParseCsvToTransactions(filePath);
+            _context.Transactions.AddRange(transactions);
+            await _context.SaveChangesAsync();
+            _bucketService.CategorizeAllTransactions();
+            TempData["SuccessMessage"] = "File uploaded successfully!";
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
