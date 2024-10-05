@@ -11,4 +11,13 @@ public class FileNamingService
         var uniqueFileName = $"{baseFileName}_{timestamp}.imported";
         return uniqueFileName;
     }
+
+    public string getUploadDirectory() {
+        var uploadDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+
+        if (!Directory.Exists(uploadDirectory)) {
+            Directory.CreateDirectory(uploadDirectory);
+        }
+        return uploadDirectory;
+    }
 }

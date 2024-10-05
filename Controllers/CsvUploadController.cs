@@ -40,7 +40,6 @@ namespace expense_transactions.Controllers
                 TempData["ErrorMessage"] = "No file selected or file size is zero.";
                 return RedirectToAction("Index");
             }
-
             //check if csv
             var fileExtension = Path.GetExtension(model.UploadedFile.FileName);
             if (fileExtension == null || !fileExtension.Equals(".csv", StringComparison.OrdinalIgnoreCase))
@@ -48,8 +47,8 @@ namespace expense_transactions.Controllers
                 TempData["ErrorMessage"] = "Invalid file type. Please upload a CSV file.";
                 return RedirectToAction("Index");
             }
-
-            var uploadDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+            //get upload directory
+            var uploadDirectory = _fileNamingService.getUploadDirectory();
             var fileName = _fileNamingService.MakeUniqueFileName(model.UploadedFile.FileName);
             var filePath = Path.Combine(uploadDirectory, fileName);
 
