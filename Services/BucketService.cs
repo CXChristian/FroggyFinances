@@ -25,15 +25,28 @@ public class BucketService
 
         foreach (var bucket in bucketsArray)
         {
-            if (bucketCompany != null &&
-                    bucket.Company != null &&
-                        bucketCompany.Contains(bucket.Company.ToUpper()))
+            if (!string.IsNullOrEmpty(bucketCompany) &&
+                !string.IsNullOrEmpty(bucket.Company) &&
+                bucketCompany.Contains(bucket.Company.ToUpper()))
             {
                 bucketCategory = bucket.Category ?? "Uncategorized";
                 // bucketId = bucket.Id;
                 break;
             }
         }
+
+        if (bucketCategory == "Uncategorized" && !string.IsNullOrEmpty(bucketCompany))
+        {
+            var newBucket = new Bucket
+            {
+                Category = bucketCategory,
+                Company = bucketCompany
+            };
+            _bucketContext.Buckets?.Add(newBucket); 
+            _bucketContext.SaveChanges();
+            bucketCategory = newBucket.Category;
+        }
+
         transaction.BucketCategory = bucketCategory;
         // transaction.BucketId = bucketId;
         _transactionContext.Transactions.Update(transaction);

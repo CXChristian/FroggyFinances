@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using expense_transactions.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace expense_transactions.Data
 {
@@ -14,7 +15,7 @@ namespace expense_transactions.Data
             };
         }
 
-        public static async Task Initialize(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task Initialize(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, BucketContext bucketContext)
         {
             // Ensure roles are created
             if (!await roleManager.RoleExistsAsync("admin"))
@@ -36,9 +37,20 @@ namespace expense_transactions.Data
                     var result = await userManager.CreateAsync(user, "P@$$w0rd");
                     if (result.Succeeded)
                     {
-                        await userManager.AddToRoleAsync(user, user.Role);
+                        if (!string.IsNullOrEmpty(user.Role))
+                        {
+                            await userManager.AddToRoleAsync(user, user.Role);
+                        }
                     }
                 }
+            }
+
+            // Seed buckets
+            if (bucketContext.Buckets != null && !await bucketContext.Buckets.AnyAsync())  // Check if any buckets already exist
+            {
+                var buckets = GetBucket();
+                bucketContext.Buckets.AddRange(buckets);
+                await bucketContext.SaveChangesAsync();
             }
         }
 

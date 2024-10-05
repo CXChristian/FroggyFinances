@@ -43,7 +43,7 @@ using (var scope = app.Services.CreateScope())
     {
         userContext.Database.Migrate();
         bucketContext.Database.Migrate();
-        await SampleData.Initialize(userManager, roleManager);
+        await SampleData.Initialize(userManager, roleManager, bucketContext);
     }
     catch (Exception ex)
     {
