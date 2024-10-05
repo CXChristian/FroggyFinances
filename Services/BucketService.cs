@@ -35,18 +35,6 @@ public class BucketService
             }
         }
 
-        if (bucketCategory == "Uncategorized" && !string.IsNullOrEmpty(bucketCompany))
-        {
-            var newBucket = new Bucket
-            {
-                Category = bucketCategory,
-                Company = bucketCompany
-            };
-            _bucketContext.Buckets?.Add(newBucket); 
-            _bucketContext.SaveChanges();
-            bucketCategory = newBucket.Category;
-        }
-
         transaction.BucketCategory = bucketCategory;
         // transaction.BucketId = bucketId;
         _transactionContext.Transactions.Update(transaction);
