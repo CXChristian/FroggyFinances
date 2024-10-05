@@ -15,7 +15,7 @@ public class CsvParserService
         _bucketService = bucketService;
     }
 
-    public List<TransactionModel> ParseCsvToTransactions(string path)
+    public List<TransactionModel> ParseCsvToTransactions(string path, string userId)
     {
         var transactions = new List<TransactionModel>();
         var config = new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -42,6 +42,7 @@ public class CsvParserService
                     Amount = csvFile.GetField<float>(2)
                 };
                 transaction.BucketCategory = _bucketService.CategorizeTransaction(transaction);
+                transaction.userID = userId;
                 transactions.Add(transaction);
             }
         }

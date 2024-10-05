@@ -12,6 +12,7 @@ namespace expense_transactions.Models
         public string? Date { get; set; }
         public string? Company { get; set; }
         public float Amount { get; set; }
+        public string? userID { get; set; }
         public string? BucketCategory { get; set; } = "Uncategorized";  //default value
     }
 }

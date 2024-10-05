@@ -3,6 +3,7 @@ using expense_transactions.Data;
 using expense_transactions.Models;
 using Microsoft.AspNetCore.Authorization;
 using expense_transactions.Services;
+using System.Security.Claims;
 
 namespace expense_transactions.Controllers
 {
@@ -30,6 +31,9 @@ namespace expense_transactions.Controllers
         [HttpPost]
         public async Task<IActionResult> Upload(CsvUploadViewModel model)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value; 
+
+
             //check if file exists
             if (model.UploadedFile == null || model.UploadedFile.Length == 0)
             {
@@ -53,7 +57,7 @@ namespace expense_transactions.Controllers
             {
                 await model.UploadedFile.CopyToAsync(stream);
             }
-            var transactions = _csvParserService.ParseCsvToTransactions(filePath);
+            var transactions = _csvParserService.ParseCsvToTransactions(filePath, userId ?? "unknown");
 
             foreach (var transaction in transactions)
             {
