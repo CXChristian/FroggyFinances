@@ -24,17 +24,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="CsvUpload"
-                                asp-action="Index">Csv Upload</a>
-                        </li>
-                        
+                       
                         @if (User.Identity!.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Categories"
-                                    asp-action="Index">Transactions</a>
+                                <a class="nav-link text-dark" asp-controller="CsvUpload"
+                                    asp-action="Index">Csv Upload</a>
                             </li>
                         }
                         @if (User.IsInRole("admin"))

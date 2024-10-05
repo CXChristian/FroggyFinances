@@ -12,3 +12,10 @@ doUpdate the database with the new migration/model updates
 
 Formatting Code:
   dotnet format expense_transactions.csproj
+
+Seeded Accounts:
+aa@aa.aa
+P@$$w0rd
+
+mm@mm.mm 
+P@$$w0rd
