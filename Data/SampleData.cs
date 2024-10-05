@@ -59,7 +59,7 @@ namespace expense_transactions.Data
             List<Bucket> bucket = new List<Bucket>() {
                 new Bucket() {
                     Id=1,
-                    Category = "Entertainment",
+                    Category = "Food",
                     Company = "ST JAMES RESTAURAT",
                 },
                 new Bucket() {
@@ -79,7 +79,7 @@ namespace expense_transactions.Data
                 },
                 new Bucket() {
                     Id=5,
-                    Category="Entertainment",
+                    Category="Food",
                     Company = "PUR & SIMPLE RESTAUR",
                 },
                 new Bucket() {
@@ -96,6 +96,81 @@ namespace expense_transactions.Data
                     Id=8,
                     Category="Gas Heating",
                     Company = "FORTISBC",
+                },
+                new Bucket() {
+                    Id=9,
+                    Category= "Health",
+                    Company = "GATEWAY",
+                },
+                new Bucket() {
+                    Id=10,
+                    Category="Food",
+                    Company = "SUBWAY",
+                },
+                new Bucket() {
+                    Id=11,
+                    Category="Government",
+                    Company = "GC",
+                },
+                new Bucket() {
+                    Id=12,
+                    Category="Banking",
+                    Company = "CHQ",
+                },
+                new Bucket() {
+                    Id=13,
+                    Category="Banking",
+                    Company = "BMO",
+                },
+                new Bucket() {
+                    Id=14,
+                    Category="Groceries",
+                    Company = "WALMART",
+                },
+                new Bucket() {
+                    Id=15,
+                    Category="Food",
+                    Company = "MCDONALDS",
+                },
+                new Bucket() {
+                    Id=16,
+                    Category="Food",
+                    Company = "WHITE SPOT RESTAURAN",
+                },
+                new Bucket() {
+                    Id=17,
+                    Category="Communication",
+                    Company = "Shaw Cable",
+                },
+                new Bucket() {
+                    Id=18,
+                    Category="Retail",
+                    Company = "CANADIAN TIRE",
+                },
+                new Bucket() {
+                    Id=19,
+                    Category= "Donations",
+                    Company = "WORLD VISION",
+                },
+                new Bucket() {
+                    Id=20,
+                    Category= "Food",
+                    Company = "TIM HORTONS",
+                },
+                new Bucket() {
+                    Id=21,
+                    Category= "Food",
+                    Company = "7-ELEVEN STORE",
+                },
+                new Bucket() {
+                    Id=22,
+                    Category= "Banking",
+                    Company = "O.D.P FEE",
+                },
+                new Bucket() {
+                    Id=23,
+                    Category= "Banking",
+                    Company = "MONTHLY ACCOUNT FEE",
                 },
             };
             return bucket;
