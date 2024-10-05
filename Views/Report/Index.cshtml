@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "Bucket List";
+
+    // Groups bucket and sum amount into dictionary
+    var bucketAmounts = ((IEnumerable<TransactionModel>)Model)
+        .GroupBy(m => m.BucketCategory) 
+        .ToDictionary(g => g.Key, g => g.Sum(m => m.Amount));
+}
+
+<div class="text-center">
+    <h1 class="display-4">Report</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Bucket</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bucket in bucketAmounts)
+            {
+                <tr>
+                    <td>@bucket.Key</td>
+                    <td>@bucket.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -31,6 +31,9 @@
                                 <a class="nav-link text-dark" asp-controller="CsvUpload"
                                     asp-action="Index">Csv Upload</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Report" asp-action="Index">Report</a>
+                            </li>
                         }
                         @if (User.IsInRole("admin"))
                         {
