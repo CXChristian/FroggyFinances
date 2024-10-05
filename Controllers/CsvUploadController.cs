@@ -31,7 +31,7 @@ namespace expense_transactions.Controllers
         [HttpPost]
         public async Task<IActionResult> Upload(CsvUploadViewModel model)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value; 
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
 
             //check if file exists
