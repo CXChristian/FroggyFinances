@@ -9,6 +9,12 @@ namespace expense_transactions.Services;
 
 public class CsvParserService
 {
+    private readonly BucketService _bucketService;
+    public CsvParserService(BucketService bucketService)
+    {
+        _bucketService = bucketService;
+    }
+
     public List<TransactionModel> ParseCsvToTransactions(string path)
     {
         var transactions = new List<TransactionModel>();
@@ -34,7 +40,7 @@ public class CsvParserService
                     Company = normalizedCompanyName,
                     Amount = csvFile.GetField<float>(2)
                 };
-
+                transaction.BucketCategory = _bucketService.CategorizeTransaction(transaction);
                 transactions.Add(transaction);
             }
         }
