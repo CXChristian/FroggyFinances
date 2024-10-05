@@ -7,11 +7,11 @@ using expense_transactions.Data;
 
 #nullable disable
 
-namespace expense_transactions.Data.Migrations.TransactionContextMigrations
+namespace expense_transactions.Data.Migrations.BucketContextMigrations
 {
-    [DbContext(typeof(TransactionContext))]
-    [Migration("20241005063119_M3")]
-    partial class M3
+    [DbContext(typeof(BucketContext))]
+    [Migration("20241005081141_M2")]
+    partial class M2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,27 +19,21 @@ namespace expense_transactions.Data.Migrations.TransactionContextMigrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
 
-            modelBuilder.Entity("expense_transactions.Models.TransactionModel", b =>
+            modelBuilder.Entity("expense_transactions.Models.Bucket", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<float>("Amount")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("BucketCategory")
+                    b.Property<string>("Category")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Company")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Date")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
-                    b.ToTable("Transactions", (string)null);
+                    b.ToTable("Buckets");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,8 +10,8 @@ using expense_transactions.Data;
 namespace expense_transactions.Data.Migrations.TransactionContextMigrations
 {
     [DbContext(typeof(TransactionContext))]
-    [Migration("20241005073443_UpdateTransactionIdentity")]
-    partial class UpdateTransactionIdentity
+    [Migration("20241005081144_M56")]
+    partial class M56
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

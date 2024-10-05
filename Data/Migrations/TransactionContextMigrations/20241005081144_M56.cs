@@ -5,7 +5,7 @@
 namespace expense_transactions.Data.Migrations.TransactionContextMigrations
 {
     /// <inheritdoc />
-    public partial class M3 : Migration
+    public partial class M56 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
