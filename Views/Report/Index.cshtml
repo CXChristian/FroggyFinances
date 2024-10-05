@@ -5,6 +5,8 @@
     var bucketAmounts = ((IEnumerable<TransactionModel>)Model)
         .GroupBy(m => m.BucketCategory) 
         .ToDictionary(g => g.Key, g => g.Sum(m => m.Amount));
+
+    var dataPoints = bucketAmounts.Select(b => new { label = b.Key, y = b.Value }).ToList();
 }
 
 <div class="text-center">
@@ -26,4 +28,27 @@
             }
         </tbody>
     </table>
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 </div>
+
+<!-- Include the CanvasJS library -->
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<!-- Scripts for the pie chart -->
+<script>
+    window.onload = function() {
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            title: {
+                text: "Expenses by Transaction Type"
+            },
+            data: [{
+                type: "pie",
+                yValueFormatString: "#,##0.00\"\"",
+                indexLabel: "{label} ({y})",
+                dataPoints: @Html.Raw(Json.Serialize(dataPoints))
+            }]
+        });
+        chart.render();
+    }
+</script>
