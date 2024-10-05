@@ -3,7 +3,7 @@
 
     // Groups bucket and sum amount into dictionary
     var bucketAmounts = ((IEnumerable<TransactionModel>)Model)
-        .GroupBy(m => m.BucketCategory) 
+        .GroupBy(m => m.BucketCategory ?? "Uncategorized") 
         .ToDictionary(g => g.Key, g => g.Sum(m => m.Amount));
 
     var dataPoints = bucketAmounts.Select(b => new { label = b.Key, y = b.Value }).ToList();

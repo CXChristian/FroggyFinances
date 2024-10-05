@@ -77,11 +77,14 @@ namespace Assignment1.Controllers
         {
             if (ModelState.IsValid)
             {
-                bucket.Company = bucket.Company.ToUpper();
-                bucket.Category = CapitalizeFirstLetters(bucket.Category);
-                _context.Add(bucket);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (bucket.Company != null && bucket.Category != null)
+                {
+                    bucket.Company = bucket.Company.ToUpper();
+                    bucket.Category = CapitalizeFirstLetters(bucket.Category);
+                    _context.Add(bucket);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
             return View(bucket);
         }
@@ -131,7 +134,7 @@ namespace Assignment1.Controllers
 
         private bool BucketExists(int id)
         {
-            return _context.Buckets.Any(e => e.Id == id);
+            return _context.Buckets != null && _context.Buckets.Any(e => e.Id == id);
         }
 
         public static string CapitalizeFirstLetters(string input)
