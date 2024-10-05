@@ -59,7 +59,7 @@ namespace expense_transactions.Controllers
             {
                 transaction.Id = 0;
             }
-            
+
             _context.Transactions.AddRange(transactions);
             await _context.SaveChangesAsync();
             _bucketService.CategorizeAllTransactions();

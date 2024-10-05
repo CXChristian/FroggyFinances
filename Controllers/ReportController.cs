@@ -7,7 +7,7 @@ namespace MicrosoftWebA1.Controllers
     public class ReportController : Controller
     {
         private readonly TransactionContext _context;
-        
+
         public ReportController(TransactionContext transactionContext)
         {
             _context = transactionContext;
