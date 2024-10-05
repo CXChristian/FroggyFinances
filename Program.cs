@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<BucketService>();
 builder.Services.AddScoped<TransactionService>();
+builder.Services.AddScoped<FileNamingService>();
 builder.Services.AddControllersWithViews().AddSessionStateTempDataProvider();
 builder.Services.AddSession();
 

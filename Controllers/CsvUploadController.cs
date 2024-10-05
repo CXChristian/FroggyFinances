@@ -12,12 +12,14 @@ namespace expense_transactions.Controllers
         private readonly TransactionContext _context;
         private readonly CsvParserService _csvParserService;
         private readonly BucketService _bucketService;
+        private readonly FileNamingService _fileNamingService;
         public CsvUploadController(TransactionContext context,
-        CsvParserService csvParserService, BucketService bucketService)
+        CsvParserService csvParserService, BucketService bucketService, FileNamingService fileNamingService)
         {
             _context = context;
             _csvParserService = csvParserService;
             _bucketService = bucketService;
+            _fileNamingService = fileNamingService;
         }
 
         [HttpGet]
@@ -28,12 +30,14 @@ namespace expense_transactions.Controllers
         [HttpPost]
         public async Task<IActionResult> Upload(CsvUploadViewModel model)
         {
+            //check if file exists
             if (model.UploadedFile == null || model.UploadedFile.Length == 0)
             {
                 TempData["ErrorMessage"] = "No file selected or file size is zero.";
                 return RedirectToAction("Index");
             }
 
+            //check if csv
             var fileExtension = Path.GetExtension(model.UploadedFile.FileName);
             if (fileExtension == null || !fileExtension.Equals(".csv", StringComparison.OrdinalIgnoreCase))
             {
@@ -42,25 +46,23 @@ namespace expense_transactions.Controllers
             }
 
             var uploadDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
-            var filePath = Path.Combine(uploadDirectory, model.UploadedFile.FileName);
-
-            if (System.IO.File.Exists(filePath))
-            {
-                TempData["ErrorMessage"] = $"File '{model.UploadedFile.FileName}' has already been uploaded.";
-                return RedirectToAction("Index");
-            }
+            var fileName = _fileNamingService.MakeUniqueFileName(model.UploadedFile.FileName);
+            var filePath = Path.Combine(uploadDirectory, fileName);
 
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await model.UploadedFile.CopyToAsync(stream);
             }
-
             var transactions = _csvParserService.ParseCsvToTransactions(filePath);
+
+            foreach (var transaction in transactions)
+            {
+                transaction.Id = 0;
+            }
+            
             _context.Transactions.AddRange(transactions);
             await _context.SaveChangesAsync();
-
             _bucketService.CategorizeAllTransactions();
-
             TempData["SuccessMessage"] = "File uploaded and processed successfully!";
             return RedirectToAction("Index");
         }

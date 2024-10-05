@@ -36,6 +36,7 @@ public class CsvParserService
 
                 var transaction = new TransactionModel
                 {
+                    Id = 0, //set id to 0 to indicate new entity!
                     Date = csvFile.GetField(0),
                     Company = normalizedCompanyName,
                     Amount = csvFile.GetField<float>(2)
@@ -53,10 +54,6 @@ public class CsvParserService
         {
             return "UNKNOWN";
         }
-
         return Regex.Replace(name, @"\s+", " ").ToUpperInvariant().Trim();
-        //replaces all whitespace characters with a single space,
-        //converts to uppercase
-        //trims leading and trailing whitespace
     }
 }

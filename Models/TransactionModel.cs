@@ -7,10 +7,11 @@ namespace expense_transactions.Models
     public class TransactionModel
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string? Date { get; set; }
         public string? Company { get; set; }
         public float Amount { get; set; }
-        public string? BucketCategory { get; set; }  = "Uncategorized";  //default value
+        public string? BucketCategory { get; set; } = "Uncategorized";  //default value
     }
 }
