@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace expense_transactions.Migrations
+namespace expense_transactions.Data.Migrations.TransactionContextMigrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class M3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,9 +16,10 @@ namespace expense_transactions.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Date = table.Column<string>(type: "TEXT", nullable: false),
-                    Company = table.Column<string>(type: "TEXT", nullable: false),
-                    Amount = table.Column<float>(type: "REAL", nullable: false)
+                    Date = table.Column<string>(type: "TEXT", nullable: true),
+                    Company = table.Column<string>(type: "TEXT", nullable: true),
+                    Amount = table.Column<float>(type: "REAL", nullable: false),
+                    BucketCategory = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

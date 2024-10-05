@@ -7,11 +7,11 @@ using expense_transactions.Data;
 
 #nullable disable
 
-namespace expense_transactions.Migrations
+namespace expense_transactions.Data.Migrations.TransactionContextMigrations
 {
     [DbContext(typeof(TransactionContext))]
-    [Migration("20241003215840_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241005063119_M3")]
+    partial class M3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,17 +28,18 @@ namespace expense_transactions.Migrations
                     b.Property<float>("Amount")
                         .HasColumnType("REAL");
 
+                    b.Property<string>("BucketCategory")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Company")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Date")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Transactions");
+                    b.ToTable("Transactions", (string)null);
                 });
 #pragma warning restore 612, 618
         }

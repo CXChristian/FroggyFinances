@@ -6,31 +6,37 @@ using expense_transactions.Data;
 
 #nullable disable
 
-namespace expense_transactions.Data.Migrations.BucketContextMigrations
+namespace expense_transactions.Data.Migrations.TransactionContextMigrations
 {
-    [DbContext(typeof(BucketContext))]
-    partial class BucketContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(TransactionContext))]
+    partial class TransactionContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
 
-            modelBuilder.Entity("expense_transactions.Models.Bucket", b =>
+            modelBuilder.Entity("expense_transactions.Models.TransactionModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
+                    b.Property<float>("Amount")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("BucketCategory")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Company")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Date")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Buckets");
+                    b.ToTable("Transactions", (string)null);
                 });
 #pragma warning restore 612, 618
         }

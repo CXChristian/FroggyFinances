@@ -1,7 +1,3 @@
-//TODO: put get bucket category iteration in a helper method
-
-using System;
-using System.Data;
 using System.Text.RegularExpressions;
 using expense_transactions.Data;
 using expense_transactions.Models;
@@ -19,55 +15,30 @@ public class BucketService
         _transactionContext = transactionContext;
     }
 
-    public Bucket CategorizeTransaction(TransactionModel transaction)
+    public string CategorizeTransaction(TransactionModel transaction)
     {
-        var bucketCompany = transaction.Company?.Trim().ToUpperInvariant();
-        var bucketMapping = new Dictionary<string, string>
-        {
-            { @"\b(WALMART|REAL\s*CDN\s*SUPERS|COSTCO|SAFEWAY)\b", "Groceries" },
-            { @"\b(SUBWAY|MCDONALDS|TIM\s*HORTONS|STARBUCKS|RESTAU|ST\s*JAMES\s*RESTAURAT|WHITE\s*SPOT\s*RESTAURAN)\b", "Dining" },
-            { @"\b(ICBC|WORLD\s*VISION|MSP|INS|INSURANCE)\b", "Insurance" },
-            { @"\b(ROGERS|SHAW|FORTISBC|CABLE)\b", "Utilities" },
-            { @"\b(O.D.P|MONTHLY\s*ACCOUNT\s*FEE|CHQ|GATEWAY|RED\s*CROSS)\b", "Miscellaneous" }
-        };
-        var bucketCategory = !string.IsNullOrEmpty(bucketCompany) ? FindMatchingBucketCategory(bucketCompany, bucketMapping) : "Uncategorized";
-        var bucket = _bucketContext.Buckets?.FirstOrDefault(b => b.Category == bucketCategory);
-        if (bucket == null)
-        {
-            bucket = new Bucket
-            {
-                Category = bucketCategory,
-                Company = bucketCompany,
-                Transactions = new List<TransactionModel>()
-            };
-            _bucketContext.Buckets?.Add(bucket);
-            _bucketContext.SaveChanges();
-        }
-        if (!bucket.Transactions.Contains(transaction))
-        {
-            bucket.Transactions.Add(transaction);
-            transaction.BucketId = bucket.Id;
-            transaction.Bucket = bucket;
-            _transactionContext.Update(transaction);
-        }
-        return bucket;
-    }
+        var bucketCompany = transaction.Company?.Trim().ToUpperInvariant(); //not sure if needed
+        var bucketsArray = _bucketContext.Buckets?.ToList() ?? new List<Bucket>();
 
-    public string FindMatchingBucketCategory(string company, Dictionary<string, string> bucketMapping)
-    {
-        foreach (var mapping in bucketMapping)
+        string bucketCategory = "Uncategorized";
+        // int? bucketId = null;
+
+        foreach (var bucket in bucketsArray)
         {
-            if (Regex.IsMatch(company, mapping.Key, RegexOptions.IgnoreCase))
+            if (bucketCompany != null &&
+                    bucket.Company != null &&
+                        bucketCompany.Contains(bucket.Company.ToUpper()))
             {
-                return mapping.Value;
+                bucketCategory = bucket.Category ?? "Uncategorized";
+                // bucketId = bucket.Id;
+                break;
             }
         }
-        return "Uncategorized";
-    }
-
-    public string GetBucketCategory(string company, Dictionary<string, string> bucketMapping)
-    {
-        return FindMatchingBucketCategory(company, bucketMapping);
+        transaction.BucketCategory = bucketCategory;
+        // transaction.BucketId = bucketId;
+        _transactionContext.Transactions.Update(transaction);
+        _transactionContext.SaveChanges();
+        return bucketCategory;
     }
 
     public void CategorizeAllTransactions()
@@ -75,16 +46,9 @@ public class BucketService
         var transactions = _transactionContext.Transactions.ToList();
         foreach (var transaction in transactions)
         {
-            var bucket = CategorizeTransaction(transaction);
-            if (!bucket.Transactions.Contains(transaction))
-            {
-                bucket.Transactions.Add(transaction);
-                transaction.BucketId = bucket.Id;
-                _transactionContext.Update(transaction);
-            }
+            CategorizeTransaction(transaction);
         }
         _transactionContext.SaveChanges();
-        _bucketContext.SaveChanges();
     }
 
     public void ClearBucketsTable()

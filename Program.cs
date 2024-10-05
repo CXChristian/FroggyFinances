@@ -6,6 +6,10 @@ using expense_transactions.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
+builder.Services.AddScoped<BucketService>();
+builder.Services.AddScoped<TransactionService>();
 builder.Services.AddControllersWithViews().AddSessionStateTempDataProvider();
 builder.Services.AddSession();
 
@@ -57,6 +61,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseSession();
 app.UseSession();
 app.UseRouting();
 
