@@ -1,10 +1,71 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+} 
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - expense_transactions</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/expense_transactions.styles.css" asp-append-version="true" />
+</head>
+
+<body>    
+@if (!User.Identity!.IsAuthenticated)
+{
+    <div class="homepage-banner">
+        <div class="p-5 text-center bg-body-tertiary rounded-3 text-white">
+            <h1 class="text-body-emphasis">Financial Visualisations</h1>
+            <p class="col-lg-8 mx-auto fs-5 secondary-color">
+                Easily upload a CSV file to display your categorized expenses through charts. 
+            </p>
+            <img src="~/images/TransactionTable.png" alt="Banner Image" class="img-fluid home-transaction-images" />
+            <img src="~/images/TransactionPieChart.png" alt="Banner Image" class="img-fluid home-transaction-images" />
+            <div class="d-inline-flex gap-2 mb-5">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">
+                    <button class="d-inline-flex align-items-center btn btn-success btn-lg px-4 rounded-pill" type="button">
+                        Register Now
+                    </button>
+                </a>
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">
+                    <button class="btn btn-secondary btn-lg px-4 rounded-pill" type="button">
+                        Login
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+} else {
+   <div class="container my-5">
+    <div class="p-5 text-center bg-body-tertiary rounded-3">
+        <h1 class="text-body-emphasis text-white">Welcome Back, @User.Identity?.Name!</h1>
+        <div class="d-inline-flex gap-2 mb-5">
+            <a class="nav-link text-dark" asp-controller="CsvUpload" asp-action="Index">
+                <button class="d-inline-flex align-items-center btn btn-success btn-lg px-4 rounded-pill" type="button">
+                    Upload CSV
+                </button>
+            </a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Report" asp-action="Index">
+                <button class="d-inline-flex align-items-center btn btn-secondary btn-lg px-4 rounded-pill" type="button">
+                    Reports
+                </button>
+            </a>
+            @if (User.IsInRole("admin"))
+            {
+                <a class="nav-link text-dark" asp-area="" asp-controller="Bucket" asp-action="Index">
+                    <button class="d-inline-flex align-items-center btn btn-secondary btn-lg px-4 rounded-pill" type="button">
+                        Buckets
+                    </button>
+                </a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">
+                    <button class="d-inline-flex align-items-center btn btn-secondary btn-lg px-4 rounded-pill" type="button">
+                        User Manager
+                    </button>
+                </a>
+            }
+        </div>
+    </div>
+    </div> 
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-
-    @* <a href="/CsvUpload/Index" class="btn btn-primary">Go to CSV Upload Page</a> *@
-</div>
+</body>
