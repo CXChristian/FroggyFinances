@@ -1,51 +1,62 @@
 @{
     ViewData["Title"] = "Bucket List";
-
-    // Groups bucket and sum amount into dictionary
     var bucketAmounts = ((IEnumerable<TransactionModel>)Model)
-        .GroupBy(m => m.BucketCategory ?? "Uncategorized") 
-        .ToDictionary(g => g.Key, g => g.Sum(m => m.Amount));
+    .GroupBy(m => m.BucketCategory ?? "Uncategorized")
+    .ToDictionary(g => g.Key, g => g.Sum(m => m.Amount));
 
     var dataPoints = bucketAmounts.Select(b => new { label = b.Key, y = b.Value }).ToList();
 }
 
-<div class="text-center">
-    <h1 class="display-4">Report</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Bucket</th>
-                <th>Amount</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var bucket in bucketAmounts)
-            {
-                <tr>
-                    <td>@bucket.Key</td>
-                    <td>@bucket.Value</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<div class="container my-5">
+    <div class="card shadow-sm p-4">
+        <div class="text-center mb-4">
+            <h1 class="display-4 text-success">Expense Report</h1>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover shadow-sm">
+                <thead class="table-minty-header">
+                    <tr>
+                        <th scope="col" class="text-center">Bucket</th>
+                        <th scope="col" class="text-center">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var bucket in bucketAmounts)
+                    {
+                        <tr>
+                            <td class="text-center">@bucket.Key</td>
+                            <td class="text-center">@bucket.Value.ToString("C")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div id="chartContainer" class="my-5" style="height: 370px; width: 100%;"></div>
+    </div>
 </div>
-
-<!-- Include the CanvasJS library -->
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-<!-- Scripts for the pie chart -->
+
 <script>
-    window.onload = function() {
+    window.onload = function () {
         var chart = new CanvasJS.Chart("chartContainer", {
             animationEnabled: true,
-            title: {
-                text: "Expenses by Transaction Type"
+            theme: "light2",
+                text: "Expenses by Transaction Type",
+                fontFamily: "Arial",
+                fontColor: "#78c2ad",
+                fontSize: 24
             },
             data: [{
                 type: "pie",
                 yValueFormatString: "#,##0.00\"\"",
                 indexLabel: "{label} ({y})",
+                indexLabelFontSize: 14,
+                indexLabelFontColor: "#555",
+                indexLabelLineColor: "#78c2ad",
+                indexLabelPlacement: "outside",
+                showInLegend: true,
+                legendText: "{label}",
                 dataPoints: @Html.Raw(Json.Serialize(dataPoints))
             }]
         });

@@ -4,25 +4,31 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm p-4">
+                <h1 class="text-center text-success mb-4">Create New Bucket</h1>
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <input asp-for="Category" class="form-control" />
-                <span asp-validation-for="Category" class="text-danger"></span>
+                    <div class="form-group mb-3">
+                        <label asp-for="Category" class="control-label text-dark">Category</label>
+                        <input asp-for="Category" class="form-control rounded-pill" placeholder="Enter category" />
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Company" class="control-label text-dark">Company</label>
+                        <input asp-for="Company" class="form-control rounded-pill" placeholder="Enter company name" />
+                        <span asp-validation-for="Company" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" value="Create" class="btn btn-success btn-lg px-5 rounded-pill" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Company" class="control-label"></label>
-                <input asp-for="Company" class="form-control" />
-                <span asp-validation-for="Company" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>

@@ -1,40 +1,33 @@
 ﻿@model expense_transactions.Models.CsvUploadViewModel
+
 @{
-    ViewData["Upload"] = "Upload CSV File";
+    ViewData["Title"] = "Upload CSV File";
 }
-<h2>
-    Upload a CSV File
-</h2>
+<div class="container my-5">
+    <div class="card shadow-sm p-4">
+        <h2 class="text-center text-success mb-4">Upload a CSV File</h2>
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger text-center">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success text-center">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        <form asp-action="Upload" asp-asp-controller="CsvUpload" method="post" enctype="multipart/form-data">
+            <div class="form-group mb-4">
+                <label for="UploadedFile" class="form-label">Select a CSV File:</label>
+                <input type="file" name="UploadedFile" class="form-control rounded-pill" required />
+            </div>
 
-@if (TempData["ErrorMessage"] != null)
-{
-    <div class="alert alert-danger">
-    @TempData["ErrorMessage"]
-</div>
-}
+            <div class="text-center">
+                <button type="submit" class="btn btn-success btn-md rounded-pill px-5 mb-4">Upload</button>
+            </div>
+        </form>
 
-@if (TempData["SuccessMessage"] != null)
-{
-    <div class="alert alert-success">
-    @TempData["SuccessMessage"]
-</div>
-}
-
-
-<form asp-action="Upload" asp-asp-controller="CsvUpload" method="post" enctype="multipart/form-data">
-    <div class="primary mx-3 my-3">
-        <label for="UploadedFile">Select a CSV File:</label>
-        <input type="file" name="UploadedFile" class="form-control" required />
     </div>
-
-    <button type="submit" class="btn btn-primary mx-3 ">Upload</button>
-
-</form>
-
-<form asp-action="ClearTransactions" asp-controller="CsvUpload" method="post">
-    <button type="submit" class="btn btn-danger">Clear All Transactions</button>
-</form>
-
-<form asp-action="ClearBuckets" asp-controller="CsvUpload" method="post">
-    <button type="submit" class="btn btn-danger">Clear All Buckets</button>
-</form>
+</div>
