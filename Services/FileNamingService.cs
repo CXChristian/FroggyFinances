@@ -12,10 +12,12 @@ public class FileNamingService
         return uniqueFileName;
     }
 
-    public string getUploadDirectory() {
+    public string getUploadDirectory()
+    {
         var uploadDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
 
-        if (!Directory.Exists(uploadDirectory)) {
+        if (!Directory.Exists(uploadDirectory))
+        {
             Directory.CreateDirectory(uploadDirectory);
         }
         return uploadDirectory;
