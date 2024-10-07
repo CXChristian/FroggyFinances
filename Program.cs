@@ -3,6 +3,7 @@ using expense_transactions.Models;
 using Microsoft.AspNetCore.Identity;
 using expense_transactions.Data;
 using expense_transactions.Services;
+using System.Transactions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,12 +38,15 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     var userContext = services.GetRequiredService<UserContext>();
     var bucketContext = services.GetRequiredService<BucketContext>();
+    var transactionContext = services.GetRequiredService<TransactionContext>();
     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
     try
     {
         userContext.Database.Migrate();
         bucketContext.Database.Migrate();
+        transactionContext.Database.Migrate();
+        
         await SampleData.Initialize(userManager, roleManager, bucketContext);
     }
     catch (Exception ex)
