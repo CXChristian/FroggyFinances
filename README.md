@@ -1,21 +1,8 @@
-Making changes to context and models, use this to update migrations
-  dotnet ef migrations add M1 --context UserContext -o Data/Migrations/UserContextMigrations   
-  dotnet ef migrations add M2 --context BucketContext -o Data/Migrations/BucketContextMigrations
-    dotnet ef migrations add M56 --context TransactionContext -o Data/Migrations/TransactionContextMigrations
+# <img src="https://github.com/user-attachments/assets/2f4162ee-149d-4ba1-a84a-193800ad1be8" width="35px" height="30px"/> Froggy Finances
 
+A dotnet MVC project that manages transactions. Registered users can access their transactions history, import transactions from a CSV file, and view generated data charts. 
 
-doUpdate the database with the new migration/model updates
-  dotnet ef database update --context UserContext
-  dotnet ef database update --context BucketContext
-  dotnet ef database update --context TransactionContext
-  
+# Project Members
+mika-em CXChristian
 
-Formatting Code:
-  dotnet format expense_transactions.csproj
-
-Seeded Accounts:
-aa@aa.aa
-P@$$w0rd
-
-mm@mm.mm 
-P@$$w0rd
+![image](https://github.com/user-attachments/assets/51c2a572-b63d-4bb0-a16a-ef84cae7578d)
