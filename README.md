@@ -2,6 +2,8 @@
 
 A dotnet MVC project that manages transactions. Registered users can access their transactions history, import transactions from a CSV file, and view generated data charts. 
 
+Deployed at: https://expenseweba1.azurewebsites.net/
+
 # Project Members
 mika-em CXChristian
 
